@@ -6,37 +6,42 @@ function handleSubmit(ev) {
 
   const f = ev.target
   const name = f.personName.value
-  const stats = document.querySelector("#addName")
+  const stats = document.querySelector("#stats")
   const age = f.personAge.value
   const color = f.favColor.value
+  
+  stats.appendChild(renderList(name, age, color))
+}
 
-  const list = document.createElement('ul')
-
-  const nameItem = document.createElement('li')
-  nameItem.textContent = "Name: " + name
-  list.appendChild(nameItem)
-
-  const ageItem = document.createElement('li')
-  ageItem.textContent = "Age: " + age
-  list.appendChild(ageItem)
-
-  const colorItem = document.createElement('li')
-  colorItem.textContent = "Favorite Color: "
-
+//render a div color
+function renderColor(color) {
   const colorDiv = document.createElement('div')
   colorDiv.style.backgroundColor = color
   colorDiv.style.width = '6rem'
   colorDiv.style.height = '3rem'
-  colorItem.appendChild(colorDiv)
+  return colorDiv
+}
 
-  list.appendChild(colorItem)
+//function that creates a list item
+function renderListItem(title, item) {
+  const listItem = document.createElement('li')
+  if (title == 'Favorite Color') {
+    listItem.textContent = title + ": "
+    listItem.appendChild(renderColor(item))
+  } else {
+    listItem.textContent = title + ": " + item
+  }
+  return listItem
+}
 
-  /*list.textContent = name + " is " + age + " year(s) old! Favorite color is " + color + "."
-  list.style.color = color*/
-  
-  stats.appendChild(list)
+//function that creates a list
+function renderList(item1, item2, item3) {
+  const newList = document.createElement('ul')
+  newList.appendChild(renderListItem("Name", item1))
+  newList.appendChild(renderListItem("Age", item2))
+  newList.appendChild(renderListItem("Favorite Color", item3))
 
-  //stat.innerHTML = name + " is " + age + " years old! Favorite color is " + color + "."
+  return newList
 }
 
 const personForm = document.querySelector('#person-form')
