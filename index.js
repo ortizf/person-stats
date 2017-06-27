@@ -6,7 +6,7 @@ function handleSubmit(ev) {
 
   const f = ev.target
   const name = f.personName.value
-  const stat = document.querySelector("#addName")
+  const stats = document.querySelector("#addName")
   const age = f.personAge.value
   const color = f.favColor.value
 
@@ -21,13 +21,20 @@ function handleSubmit(ev) {
   list.appendChild(ageItem)
 
   const colorItem = document.createElement('li')
-  colorItem.textContent = "Favorite Color: " + color
+  colorItem.textContent = "Favorite Color: "
+
+  const colorDiv = document.createElement('div')
+  colorDiv.style.backgroundColor = color
+  colorDiv.style.width = '6rem'
+  colorDiv.style.height = '3rem'
+  colorItem.appendChild(colorDiv)
+
   list.appendChild(colorItem)
 
   /*list.textContent = name + " is " + age + " year(s) old! Favorite color is " + color + "."
   list.style.color = color*/
   
-  stat.appendChild(list)
+  stats.appendChild(list)
 
   //stat.innerHTML = name + " is " + age + " years old! Favorite color is " + color + "."
 }
