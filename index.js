@@ -8,7 +8,7 @@ function handleSubmit(ev) {
   const name = f.personName.value
   const stat = document.querySelector("#addName")
   const age = f.personAge.value
-  p.innerHTML = name
+  stat.innerHTML = name + " is " + age + " years old!"
 }
 
 const personForm = document.querySelector('#person-form')
