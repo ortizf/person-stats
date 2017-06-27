@@ -10,11 +10,24 @@ function handleSubmit(ev) {
   const age = f.personAge.value
   const color = f.favColor.value
 
-  const p = document.createElement('p')
-  p.textContent = name + " is " + age + " year(s) old! Favorite color is " + color + "."
-  p.style.color = color
+  const list = document.createElement('ul')
+
+  const nameItem = document.createElement('li')
+  nameItem.textContent = "Name: " + name
+  list.appendChild(nameItem)
+
+  const ageItem = document.createElement('li')
+  ageItem.textContent = "Age: " + age
+  list.appendChild(ageItem)
+
+  const colorItem = document.createElement('li')
+  colorItem.textContent = "Favorite Color: " + color
+  list.appendChild(colorItem)
+
+  /*list.textContent = name + " is " + age + " year(s) old! Favorite color is " + color + "."
+  list.style.color = color*/
   
-  stat.appendChild(p)
+  stat.appendChild(list)
 
   //stat.innerHTML = name + " is " + age + " years old! Favorite color is " + color + "."
 }
